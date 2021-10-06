@@ -6,21 +6,32 @@
         `${car.title} ${car.status == 'reserved' ? '*RESERVED*' : ''}`
       }}</v-card-title>
       <v-card-text>
-        <div class="mb-2">
-          Owner:
-          <span class="font-weight-bold">{{
-            `${car.first_name} ${car.last_name}`
-          }}</span>
-        </div>
-        <div>
-          Year: <span class="font-weight-bold">{{ car.year_of_make }}</span>
-        </div>
-        <div class="mb-2">
-          Miles: <span class="font-weight-bold">{{ car.miles }}</span>
-        </div>
-        <div class="mb-2">
-          Price: <span class="font-weight-bold">{{ car.price }}</span>
-        </div>
+        <v-simple-table>
+          <thead>
+            <tr>
+              <th class="text-left">
+                Price
+              </th>
+              <th class="text-left">
+                Miles
+              </th>
+              <th class="text-left">
+                Year Of Make
+              </th>
+              <th class="text-left">
+                Current Owner
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>{{ price }}</td>
+              <td>{{ car.miles }}</td>
+              <td>{{ car.year_of_make }}</td>
+              <td>{{ `${car.first_name} ${car.last_name}` }}</td>
+            </tr>
+          </tbody>
+        </v-simple-table>
         <div class="mb-3">
           {{ car.description }}
         </div>
@@ -55,6 +66,9 @@ export default {
   computed: {
     car() {
       return this.cars.find((el) => el.id == this.id);
+    },
+    price() {
+      return `${new Intl.NumberFormat('en').format(Number(this.car.price))} $`;
     },
   },
   methods: {

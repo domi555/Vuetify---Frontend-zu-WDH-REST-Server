@@ -14,16 +14,16 @@
         }}</span>
       </div>
       <div>
-        Year: <span class="font-weight-bold">{{ car.yearOfMake }}</span>
+        Year: <span class="font-weight-bold">{{ car.year_of_make }}</span>
       </div>
       <div class="mb-2">
         Miles: <span class="font-weight-bold">{{ car.miles }}</span>
       </div>
-      <div class="mb-2">
-        Price: <span class="font-weight-bold">{{ car.price }}</span>
-      </div>
       <div class="mb-3">
-        {{ car.description }}
+        Price:
+        <span class="font-weight-bold">{{
+          car.status != 'reserved' ? car.price : 'N/A'
+        }}</span>
       </div>
     </v-card-text>
     <v-card-actions class="ma-2">
