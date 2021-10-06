@@ -1,3 +1,21 @@
 <template>
-  <h1>This is an home page</h1>
+  <div>
+    <CarCards :cars="cars"></CarCards>
+  </div>
 </template>
+
+<script>
+import CarCards from '@/components/CarCards.vue';
+
+export default {
+  name: 'Home',
+  props: {
+    cars: {
+      type: Array,
+    },
+  },
+  components: {
+    CarCards,
+  },
+};
+</script>
