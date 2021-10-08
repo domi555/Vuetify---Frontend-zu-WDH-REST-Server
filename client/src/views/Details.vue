@@ -25,7 +25,9 @@
           </thead>
           <tbody>
             <tr>
-              <td>{{ price }}</td>
+              <td>
+                {{ car.status != 'reserved' ? price : 'N/A' }}
+              </td>
               <td>{{ car.miles }}</td>
               <td>{{ car.year_of_make }}</td>
               <td>{{ `${car.first_name} ${car.last_name}` }}</td>
