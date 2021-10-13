@@ -6,7 +6,6 @@
         :key="i"
         :car="car"
         class="ma-3"
-        @reserve="reserve"
       ></CarCard>
     </div>
   </v-main>
@@ -14,7 +13,6 @@
 
 <script>
 import CarCard from './CarCard.vue';
-import axios from 'axios';
 
 export default {
   components: {
@@ -23,23 +21,6 @@ export default {
   props: {
     cars: {
       type: Array,
-    },
-  },
-  methods: {
-    async reserve(car) {
-      try {
-        await axios({
-          url: `http://localhost:3000/cars/${car.id}`,
-          method: 'patch',
-          contentType: 'application/json',
-          data: {
-            title: `${car.title} RESERVED`,
-          },
-        });
-        this.$emit('refresh');
-      } catch {
-        console.error('Error');
-      }
     },
   },
 };
